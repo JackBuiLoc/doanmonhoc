@@ -1,0 +1,479 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+   background: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e47425d1-6e7d-4317-b861-3776d2e64404/datlzos-ca16076c-f948-481c-a49c-3ba77fd7b5a6.jpg/v1/fill/w_1600,h_873,q_75,strp/release_by_tacosauceninja_datlzos-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODczIiwicGF0aCI6IlwvZlwvZTQ3NDI1ZDEtNmU3ZC00MzE3LWI4NjEtMzc3NmQyZTY0NDA0XC9kYXRsem9zLWNhMTYwNzZjLWY5NDgtNDgxYy1hNDljLTNiYTc3ZmQ3YjVhNi5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.6mWvweY_PZTEDfTLu8RG8f_OHoCdswV1tQFQcYC-i7w");
+   background-repeat: none;
+}
+
+.bg{
+    width: 100%;
+    background-size: cover;
+    animation: moveBackground 4s linear infinite alternate;
+}
+
+header{
+    position: fixed;
+    top: 0; left: 0;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    align-items: center;
+    z-index: 99;
+}
+
+.logo{
+    font-family: "Paytone One";
+    color: #202020;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    font-size: 2rem;
+    user-select: none;
+}
+
+.navigation a{
+    position: relative;
+    font-size: 1.2em;
+    color: #D4FAFC;
+    letter-spacing: 2px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 30px;
+    margin: 11px 0 17px 0;
+    line-height: 80px;
+    color: #f1ebe5;
+    text-shadow: 0 13.36px 8.896px #000,0 -2px 1px #000;
+
+}
+
+.btn-login{
+    padding: 16px 48px;
+    background: none;
+    border: 2px solid #CBB279;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: color .3s ease-in-out;
+}
+
+.btn-login::before, .btn-login::after{
+    content: '';
+    position: absolute;
+    width: 100%; height: 100%;
+    background-color: #FFE6C7;
+    top: 0; left: 0;
+    transition: clip-path .3s;
+    z-index: -1;
+}
+
+.btn-login::before{clip-path: circle(0 at 0 0);}
+
+.btn-login::after{clip-path: circle(0 at 100% 100%) ;}
+
+.btn-login:hover{color: #000;}
+
+.btn-login:hover::before{clip-path: circle(100% at 0 0);}
+
+.btn-login:hover::after{clip-path: circle(100% at 100% 100%);}
+
+.container, .login, .snow {
+    position: relative;
+}
+
+.container {
+    z-index: 1;
+}
+
+.snow {
+    z-index: 2;
+}
+
+section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+section .bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+} 
+
+.container{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+.wrapper{
+    position: relative;
+    display: inline-block;
+}
+.login{
+    position: relative;
+    padding: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(25px) ;
+    border: 1px solid  rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid  rgba(255, 255, 255, 0.25);
+    border-left: 1px solid  rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 1s;
+    z-index: 3;
+}
+
+.login:hover{
+    opacity: 1;
+    box-shadow: 0 15px 25px black,
+                 0 0 20px 10px rgba(0,0,0,0.1);;
+    border: 2px 0 black;
+}
+
+.login h2{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.login .inputBox input{
+    border-radius: 20px;
+    position: relative;
+    width: 100%;
+    padding: 15px 20px;
+    outline: none;
+    font-size: 1.5rem;
+    color: #fff;
+    background: #000;
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(0,0,0,0.25);
+    margin-bottom:30px ;
+}
+
+.login .inputBox ::placeholder{
+    color:  rgba(255, 255, 255, 0.5);
+}
+
+.login button{
+    border-radius: 20px;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    position: relative;
+    border: none;
+    outline: none;
+    background: linear-gradient(0deg, #454545, #FFA559);
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    color: bisque;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.login button a{
+    font-size: 1em;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.login .group{
+    display: flex;
+    justify-content: space-between;
+}
+
+.login .group a{
+    font-size: 1em;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+a img{
+    width: 3rem;
+    height: 3rem;
+}
+
+.login .inputBox input:focus {
+    border: 2px solid #FFA559;
+}
+
+.group{
+    align-items: center;
+    justify-content: center;
+}
+
+.login button:hover {
+    background: transparent;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border: 2px solid black;
+    
+}
+
+.snow_wrap{
+    color: black;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.snowflake {
+    top: 0;
+    position: absolute;
+    top: -10px;
+    z-index: 1;
+    color: white;
+    font-size: 1em;
+    text-shadow: 0px 0px 5px #000;
+    animation-name: snowing;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  
+@keyframes snowing {
+    from {
+        transform: translateY(-10px) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+        to {
+            transform: translateY(2000px) translateX(100px) rotate(360deg);
+            opacity: 1;
+    }
+}
+
+h2:hover{
+    text-shadow: 0  0 5px #FFE6C7,
+                0  0 5px #FFE6C7,
+                0  0 5px #FFE6C7,
+                0  0 5px #FFE6C7;
+}
+@keyframes moveBackground {
+    from {
+        background-position: 0 0;}
+    to {
+        scale: 1.1;
+        background-position: 100% 0;}
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.resetpassword h2{
+    font-size: 30px;
+    color: black;
+    text-align: center;
+}
+
+.resetpassword{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%,-50%);
+    background: transparent;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 20px;
+    animation: fadeOut ease 2s;
+  -webkit-animation: fadeOut ease 2s;
+}
+
+.resetpassword:hover{
+    backdrop-filter: blur(40px);
+    transition-duration: 5s;
+}
+
+.User-box{
+    margin: 0 0 30px;
+    padding: 0;
+    color: aliceblue;
+    text-align: center;
+    position: relative;
+}
+
+.resetpassword .User-box input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px solid #fff;
+    outline: none;
+    background: transparent;
+    border-bottom: 1px solid #fff;
+    
+}
+
+.resetpassword .User-box label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.resetpassword .User-box input:focus ~ label,
+.resetpassword .User-box input:active ~ label{
+    top: -20px;
+    left: 0;
+    color: aqua;
+    font-size: 12px;
+}
+
+.resetpassword form {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #03e9f4;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px;
+    font-size: 16px;
+}
+
+.resetpassword form a:hover{
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #FFD93D,
+                0 0 25px #FFD93D,
+                0 0 50px #FFD93D,
+                0 0 100px #FFD93D;
+}
+
+.resetpassword a span{
+    position: absolute;
+    display: block;
+}
+
+.resetpassword a span:nth-child(1){
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent,#FFD93D);
+    animation: btn-anim-1 1s linear infinite;
+}
+
+@keyframes btn-anim-1{
+    0%{
+        left: -100%;
+    }
+    50%,100%{
+        left: 100%;
+    }
+}
+
+.resetpassword a span:nth-child(2){
+    top:-100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background:linear-gradient(180deg, transparent,#FFD93D);
+    animation: btn-2-anim-2 1s linear infinite;
+    animation-delay: .25s;
+}
+
+p{
+    padding-top: 10px;
+    color: black;
+    letter-spacing: 2px;
+    margin-bottom: 2px;
+}
+
+@keyframes btn-anim-2{
+    0%{
+        top:-100%
+    }
+    50%,100%{
+        top:100%;
+    }
+}
+
+.resetpassword a span:nth-child(3){
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent,#FFD93D);
+    animation: btn-anim-3 1s linear infinite;
+}
+
+@keyframes btn-anim-3{
+    0%{
+        right: -100%;
+    }
+    50%,100%{
+        right: 100%;
+    }
+}
+
+.resetpassword a span:nth-child(4){
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 2px;
+    background: linear-gradient(360deg,transparent,#FFD93D);
+    animation: btn-anim-4 1s linear infinite;
+    animation-delay: .75s;
+}
+
+@keyframes btn-anim-4{
+    0%{
+        bottom: -100%;
+    }
+    50%,100%{
+        bottom: 100%;
+    }
+}
+
+@keyframes moveBackground {
+    from {
+        background-position: 0 0;}
+    to {
+        scale: 1.1;
+        background-position: 100% 0;}
+}
+
+.resetpassword a:hover{
+    opacity: 0.8;
+}
+.resetpassword a:focus{
+    outline-color: transparent;
+}

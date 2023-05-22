@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+
+        <h1>To-Do List</h1>
+    </header>
+    <form id="add-task-form">
+        <input type="text" id="task-text" placeholder="Task">
+        <input type="datetime-local" id="task-deadline">
+        <button class="addtask" type="submit">Add Task</button>
+    </form>
+    <ul id="tasks"></ul>
+
+    <script>
+        // Add your JavaScript code here
+        const tasks = [];
+
+        const addTaskForm = document.querySelector('#add-task-form');
+        const taskText = document.querySelector('#task-text');
+        const taskDeadline = document.querySelector('#task-deadline');
+        const tasksList = document.querySelector('#tasks');
+
+        addTaskForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const text = taskText.value;
+            const deadline = new Date(taskDeadline.value);
+            tasks.push({ text, deadline });
+            taskText.value = '';
+            taskDeadline.value = '';
+            renderTasks();
+        });
+
+        function renderTasks() {
+            tasksList.innerHTML = '';
+            tasks.forEach((task) => {
+                const li = document.createElement('li');
+                li.className = 'task';
+                li.innerHTML = `
+                    <input type="checkbox">
+                    <input type="text" value="${task.text}">
+                    <time datetime="${task.deadline.toISOString()}">${formatDate(task.deadline)}</time>
+                `;
+                tasksList.appendChild(li);
+            });
+        }
+
+        function formatDate(date) {
+            return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+        }
+
+        setInterval(() => {
+            tasks.forEach((task) => {
+                if (new Date() > task.deadline) {
+                    alert(`Deadline for task "${task.text}" has passed!`);
+                }
+            });
+        }, 60 * 1000);
+    </script>
+    <footer>
+        <p>Xuan Loc</p>
+        <p>Have a nice day</p>
+        
+        <p class="end"><span>Copy Right </span>@by Xuan Loc</p>
+        
+        <div class="clock" style="justify-content: center;">
+            <script>
+                setInterval(() => {
+                    let date = new Date();
+                    let clock = document.querySelector('.clock');
+                    clock.innerHTML = 
+                    date.getHours() + ':' +
+                    date.getMinutes() + ':' +
+                    date.getSeconds();
+                })
+            </script>
+        </div>
+    </footer>
+</body>
+</html>
+
