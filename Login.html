@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <header>
+        <h2 class="logo">Logo</h2>
+        <div class="navigation">
+            <a href="#">Trang Chu</a>
+            <a href="#">Thong Tin Ve Chung Toi</a>
+            <a href="#">Dich Vu</a>
+            <a href="#">Lien Lac</a>
+            <button class="btn-login">Dang Nhap</button>
+        </div>
+    </header>
+
+    <div class="snow_wrap">
+        <section>
+
+            <div class="container">
+                
+            </div>
+            <div class="login">
+                <h2>Đăng Nhập</h2>
+                <div class="inputBox">
+                    <input type="text" id="email" placeholder="email" value="">
+                </div>
+                
+                <div class="inputBox">
+                    <input type="text" id="username" placeholder="username" value="">
+                </div>
+
+                <div class="inputBox">
+                    <input type="password" id="password" placeholder="password" value="">
+                </div>
+                
+                <script>
+                    function validatePassword(password) {
+                        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                        return regex.test(password);
+                    }
+                
+                    const password = document.querySelector('#password').value;
+                    if (!validatePassword(password)) {
+                        const input = document.querySelector('#password');
+                        input.classList.add('shake');
+                        setTimeout(() => input.classList.remove('shake'), 500);
+                    }
+                </script>
+
+                <style>
+                    @keyframes shake {
+                        0% { transform: translateX(0); }
+                        25% { transform: translateX(-5px); }
+                        75% { transform: translateX(5px); }
+                        100% { transform: translateX(0); }
+                    }
+
+                    .inputBox input[type = password] {
+                        animation: shake 0.5s;
+                    }
+                </style>
+                <div class="inputBox">
+                    <button onclick="myFunction()" id="btn" class="btn">
+                        <div class="btn-fill">
+                            <span><a href="Loading.html">Đăng Nhập</a></span>
+                        </div>
+                    </button>
+                    
+                </div>
+                <div class="group">
+                    <a href="resetpass.html" onclick="myFunction1()">Quên Mật Khẩu</a>
+                    <a href="https:www/Facebook.com"><img src="./Img/facebook.png"></a>
+                </div>
+            </div> 
+
+        </section>
+
+        <div class="snow">
+            <div class="snowflake"></div>
+        </div>
+    </div>
+
+    <script>
+        function myFunction() {
+          alert("Let's go to the index file");
+        }
+        function myFunction1() {
+          alert("Let's turn to reset password page");
+        }
+    </script>
+
+    <script src="javascript/snowflake.js"></script>
+
+    <script>
+        console.log("Cookies: " + navigator.cookieEnabled);
+        console.log("Browser Language: " + navigator.browserLanguage);
+        console.log("Language: " + navigator.language);
+        console.log("Platform: " + navigator.platform);
+        console.log("Connection Speed: " + navigator.connectionSpeed);
+        console.log("User Agent: " + navigator.userAgent);
+        console.log("Webdriver: " + navigator.webdriver);
+        console.log("Geolocation: " + navigator.geolocation);
+        let output = '';
+        output += "Cookies: " + navigator.cookieEnabled + '\n';
+        output += "Language: " + navigator.language + '\n';
+        output += "Platform: " + navigator.platform + '\n';
+        output += "User Agent: " + navigator.userAgent + '\n';
+        document.getElementById('output').textContent = output;
+    </script>
+    
+</body>
+</html>
